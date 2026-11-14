@@ -14,8 +14,8 @@ COPY src/ src/
 COPY policies/ policies/
 
 # Run as an unprivileged user.
-RUN useradd --system --uid 10001 proxy && chown -R proxy /app
-USER proxy
+RUN useradd --system --uid 10001 --no-create-home appuser && chown -R appuser /app
+USER appuser
 
 ENV SECURITY_POLICY_PATH=/app/policies/security_policy.yaml
 EXPOSE 8000
